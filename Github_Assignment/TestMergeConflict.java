@@ -1,3 +1,5 @@
+package Github_Assignment;
+
 public class TestMergeConflict 
 {
     public static void main(String[]args)
