@@ -12,3 +12,6 @@ Will be adding:
 - ***StatsLibrary*** folder: contains *programs of formulas* through the first few weeks of the semester + *formula sheet*. Separated into chapters 1-3.
 - Files to ***Github_Assignment*** folder.
 - Attempt at ***Hands*** assignment.
+
+Additions since last update (../../..):
+- None
