@@ -1,11 +1,13 @@
 package StatsLibrary.Chapter3;
 
-public class testDistributions {
+public class testDistributions 
+{
     public static void main(String[]args)
     {
         Binomial b = new Binomial();
         Geometric g = new Geometric();
         Hypergeometric h = new Hypergeometric();
+        NegativeBinomial n = new NegativeBinomial();
 
         // Numbers from Exercise 3.43 in textbook: Many utility companies promote energy... all 5 qualify
         System.out.println("\n===== binomial probability distribution =====");
@@ -25,5 +27,10 @@ public class testDistributions {
         System.out.println("Expected Value: " + h.hyperExpectedValue(10, 5, 4));
         System.out.println("Expected Variance " + h.hyperExpectedVariance(10, 5, 4));
 
+        // Numbers from Exercise 3.92 in textbook: Ten percent of the engines manufactured...
+        System.out.println("\n===== negative binomial probability distribution =====");
+        System.out.println("Probability: " + n.negativeBinomial(1, 2, .9, .1));
+        System.out.println("Expected Value: " + n.negativeExpectedValue(1, .9));
+        System.out.println("Expected Variance " + n.negativeExpectedVariance(1, .9));
     }
 }

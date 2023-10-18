@@ -29,7 +29,7 @@ public class Hypergeometric extends Permutations_Combinations
      * @param N size of population
      * @param n number taken from total
      * @param r total number of successful objects
-     * @return double probability
+     * @return double expected value
      */
     public double hyperExpectedValue(int N, int n, int r)
     {
@@ -42,7 +42,7 @@ public class Hypergeometric extends Permutations_Combinations
      * @param N size of population
      * @param n number taken from total
      * @param r total number of successful objects
-     * @return double probability
+     * @return double expected variance
      */
     public double hyperExpectedVariance(int N, int n, int r)
     {
