@@ -8,6 +8,8 @@ public class testDistributions
         Geometric g = new Geometric();
         Hypergeometric h = new Hypergeometric();
         NegativeBinomial n = new NegativeBinomial();
+        Poisson p = new Poisson();
+        Tchebysheff t = new Tchebysheff();
 
         // Numbers from Exercise 3.43 in textbook: Many utility companies promote energy... all 5 qualify
         System.out.println("\n===== binomial probability distribution =====");
@@ -32,5 +34,13 @@ public class testDistributions
         System.out.println("Probability: " + n.negativeBinomial(1, 2, .9, .1));
         System.out.println("Expected Value: " + n.negativeExpectedValue(1, .9));
         System.out.println("Expected Variance " + n.negativeExpectedVariance(1, .9));
+
+        // Numbers from Poisson Lecture from Oct. 16, 2023: Example: Computer crashes every 4 months. Probability of no crashes?
+        System.out.println("\n===== poisson probability distribution =====");
+        System.out.println("Probability: " + p.poisson(0, 1));
+
+        // Numbers from Tchebysheff Lecture from Oct. 18, 2023: Example 2
+        System.out.println("\n===== tchebysheff's theoreom probability distribution =====");
+        System.out.println("Probability: " + t.tchebysheff(16, 6, 11, 3) + "%");
     }
 }

@@ -2,8 +2,8 @@ package StatsLibrary.Chapter2.SetOperations;
 
 import java.util.ArrayList;
 
-public class SetOperations {
-
+public class SetOperations 
+{
     /**
      * Method for a union of two ArrayLists
      * 

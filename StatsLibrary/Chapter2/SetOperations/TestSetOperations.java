@@ -2,7 +2,8 @@ package StatsLibrary.Chapter2.SetOperations;
 
 import java.util.ArrayList;
 
-public class TestSetOperations {
+public class TestSetOperations
+{
     public static void main(String[]args)
     {
         SetOperations testSet = new SetOperations();
