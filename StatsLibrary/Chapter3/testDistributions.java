@@ -41,6 +41,6 @@ public class testDistributions
 
         // Numbers from Tchebysheff Lecture from Oct. 18, 2023: Example 2
         System.out.println("\n===== tchebysheff's theoreom probability distribution =====");
-        System.out.println("Probability: " + t.tchebysheff(16, 6, 11, 3) + "%");
+        System.out.println("Probability: " + t.tchebysheff(49, 29, 39, 5) + "%");
     }
 }
