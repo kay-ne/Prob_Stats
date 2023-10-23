@@ -1,6 +1,6 @@
 package StatsLibrary.Chapter3;
 
-public class testDistributions 
+public class TestDistributions 
 {
     public static void main(String[]args)
     {

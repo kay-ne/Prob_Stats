@@ -95,7 +95,7 @@ public class MeanMedianMode
 
         /* 
          * Got help from the solution to figure out the number of duplicate values from:
-         * Sharma, S. (2011, August 1). [Comment on the onlune forum post *Find duplicate values in Java Map?*]. Stack Overflow. https://stackoverflow.com/a/6895217.
+         * Sharma, S. (2011, August 1). [Comment on the online forum post *Find duplicate values in Java Map?*]. Stack Overflow. https://stackoverflow.com/a/6895217.
          */
         List<Integer> valuesList = new ArrayList<Integer>(dataList.values());
         Set<Integer> valuesSet = new HashSet<Integer>(dataList.values());

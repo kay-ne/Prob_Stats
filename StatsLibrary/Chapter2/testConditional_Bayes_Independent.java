@@ -1,6 +1,6 @@
 package StatsLibrary.Chapter2;
 
-public class testConditional_Bayes_Independent 
+public class TestConditional_Bayes_Independent 
 {
     public static void main(String[]args)
     {

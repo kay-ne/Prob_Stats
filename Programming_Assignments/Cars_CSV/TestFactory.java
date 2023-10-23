@@ -12,10 +12,11 @@ public class TestFactory
 
         car.constructCar(1000);
 
-        File file = new File("CarData.csv");
+        File file = new File("Programming_Assignments\\Cars_CSV\\CarData.csv");
         
         FileWriter w;
-        try {
+        try 
+        {
             w = new FileWriter(file);
             w.write("Car Type,Year,Color,Miles\n");
             for(int i = 0; i < car.carData.size(); i++)
@@ -24,7 +25,9 @@ public class TestFactory
             }
             w.close();
             System.out.println("Writing to CSV is complete!");
-        } catch (IOException e) {
+        } 
+        catch (IOException e) 
+        {
             System.out.println("An error has occurred: " + e);
         }
     }
