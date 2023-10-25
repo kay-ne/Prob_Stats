@@ -20,7 +20,9 @@ public class Tchebysheff
 
         if(a != b || k < 1)
         {
-            return 0;
+            System.out.println("Distance from 'a' and 'b' to the mean does not equal or k is < 1. You have inputted the following as... a: " + a + ", b: " + b + ".");
+            System.out.println("'k' was calculated from a/s (s is standard deviation) which resulted in: k: " + k);
+            return -1;
         }
         else
         {

@@ -7,7 +7,7 @@ public class NegativeBinomial extends Permutations_Combinations
     /**
      * Method to calculate negative binomial probability distribution
      * 
-     * @param r wanteed number for success at 'y' trial
+     * @param r wanted number for success at 'y' trial
      * @param y number of trials
      * @param p probability of success
      * @param q probability of failure
@@ -27,7 +27,16 @@ public class NegativeBinomial extends Permutations_Combinations
      */
     public double negativeExpectedValue(int r, double p)
     {
-        return r/p;
+        if(p <= 0.0)
+        {
+            System.out.println("Cannot divide by 0 or probability cannot be negative. You have inputted p as: " + p);
+            return -1;
+        }
+        else
+        {
+            return r/p;
+        }
+        
     }
 
     /**
@@ -39,6 +48,15 @@ public class NegativeBinomial extends Permutations_Combinations
      */
     public double negativeExpectedVariance(int r, double p)
     {
-        return (r*(1-p))/Math.pow(p, 2);
+        if(p <= 0.0)
+        {
+            System.out.println("Cannot divide by 0 or probability cannot be negative. You have inputted p as: " + p);
+            return -1;
+        }
+        else
+        {
+            return (r*(1-p))/Math.pow(p, 2);
+        }
+        
     }
 }

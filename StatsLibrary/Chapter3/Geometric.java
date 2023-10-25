@@ -23,7 +23,15 @@ public class Geometric
      */
     public double geometricExpectedValue(double p)
     {
-        return 1/p;
+        if(p <= 0.0)
+        {
+            System.out.println("Cannot divide by 0 or probability cannot be negative. You have inputted p as: " + p);
+            return -1;
+        }
+        else
+        {
+            return 1/p;
+        }
     }
 
     /**
@@ -34,6 +42,14 @@ public class Geometric
      */
     public double geometricExpectedVariance(double p)
     {
-        return (1-p)/Math.pow(p, 2);
+        if(p <= 0.0)
+        {
+            System.out.println("Cannot divide by 0 or probability cannot be negative. You have inputted p as: " + p);
+            return -1;
+        }
+        else
+        {
+            return (1-p)/Math.pow(p, 2);
+        }
     }
 }
