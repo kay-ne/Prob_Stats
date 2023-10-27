@@ -1,6 +1,8 @@
 package Programming_Assignments.Cars_CSV;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -27,6 +29,31 @@ public class TestFactory
             System.out.println("Writing to CSV is complete!");
         } 
         catch (IOException e) 
+        {
+            System.out.println("An error has occurred: " + e);
+        }
+
+        try
+        {
+            BufferedReader readCarData = new BufferedReader(new FileReader(file));
+
+            String line;
+            // skips the heading -- Car Type,Year,Color,Miles
+            if((line = readCarData.readLine()) != null)
+            {
+                readCarData.mark(line.length());
+            }
+
+            while((line = readCarData.readLine()) != null)
+            {
+                String[] c = line.split("[,]");
+                System.out.println(c[0] + "," + c[1] + "," + c[2] + "," + c[3]);
+            }
+
+            readCarData.close();
+
+        }
+        catch (IOException e)
         {
             System.out.println("An error has occurred: " + e);
         }
