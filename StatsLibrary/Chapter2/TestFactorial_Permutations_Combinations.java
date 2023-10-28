@@ -6,7 +6,7 @@ public class TestFactorial_Permutations_Combinations
     {
         Permutations_Combinations test = new Permutations_Combinations();
 
-        System.out.println("Factorial: " + test.factorial(7));
+        System.out.println("Factorial of 7: " + test.factorial(7));
 
         // Numbers from Exercise 2.37 part a in textbook: A businesswoman in Philadelphia is preparing an itinerary for a visit to six major cities... 
         System.out.println("Permutations of 6 P 6: " + test.permutations(6, 6));

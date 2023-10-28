@@ -3,9 +3,7 @@ package StatsLibrary.Chapter3;
 import StatsLibrary.Chapter2.Permutations_Combinations;
 
 public class Hypergeometric extends Permutations_Combinations
-{
-    //TODO: Handle 0 cases. How?
-    
+{   
     /**
      * Method to calculate hypergeometric probability
      * 
