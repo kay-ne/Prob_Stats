@@ -3,15 +3,6 @@ package Programming_Assignments.Hands_MonteCarloSimulation;
 import java.util.ArrayList;
 import java.util.Collections;
 
-/**
- * for a straight flush and a royal flush does the order matter? like does it specifically have to be:
- * 
- * straight flush: 10 9 8 7 6  or 5 4 3 2 A
- * can two cards with the same suit be next to each other?
- * 
- * royal flush (is it always): A K Q J 10 in that order
- */
-
 public class HandEvaluator
 {
     ArrayList<Card> Hand = new ArrayList<>();
@@ -55,20 +46,20 @@ public class HandEvaluator
         for(int i = 0; i < suite.size(); i++)
         {
             // each suite has 13 cards
-            for(int j = 0; j < 13; j++)
+            for(int j = 0; j < 14; j++)
             {
-                if(j == 0) // Ace face
+                if(j == 13) // Ace face
                 {
-                    Card card = new Card(suite.get(i), faces.get(0));
+                    Card card = new Card(suite.get(i), faces.get(0), j+1);
                     Deck.add(card);
                 }
-                if(j > 9)
+                if(j > 10)
                 {
-                    Card card = new Card(suite.get(i), faces.get(facesIndex++));
+                    Card card = new Card(suite.get(i), faces.get(facesIndex++), j);
                     Deck.add(card);
                 }
                 else
-                if(j != 0 && j < 11)
+                if(j != 0 && j < 10)
                 {
                     j++;
                     Card card = new Card(suite.get(i), j);
@@ -93,7 +84,7 @@ public class HandEvaluator
      */
     public void drawCard()
     {
-        if(Deck.get(0).getValue() > 0)
+        if(Deck.get(0).getValue() < 11)
         {
             int value = Deck.get(0).getValue();
             Card card = new Card(Deck.get(0).getSuite(), value);
@@ -102,7 +93,8 @@ public class HandEvaluator
         else
         {
             String face = Deck.get(0).getFaceValue();
-            Card card = new Card(Deck.get(0).getSuite(), face);
+            int value = Deck.get(0).getValue();
+            Card card = new Card(Deck.get(0).getSuite(), face, value);
             Hand.add(card);
         }
         Deck.remove(0);
@@ -127,253 +119,287 @@ public class HandEvaluator
     }
 
     /**
-     * Method to calculate probability of getting one Pair in a hand.
+     * Method to run Monte Carlo Simulation of poker hands.
      * 
      * @param n number of trials
-     * @param c number of cards in a hand
-     * @return double probability
+     * @param c number of cards wanted in hand
      */
-    public double pair(int n, int c)
+    public void runMonteCarlo(int n, int c)
     {
-        int successes = 0;
-        int match = 0;
-
         shuffleDeck();
 
+        int pairs = 0, threes = 0, straights = 0, flushes = 0, fullhouses = 0, fours = 0, straightFlushes = 0, royalFlushes = 0;
         for(int i = 0; i < n; i++)
         {
             drawHand(c);
-            for(int j = 0; j < Hand.size(); j++)
+
+            if(pair(Hand))
             {
-                for(int k = j+1; k < Hand.size(); k++)
-                {
-                    if((Hand.get(j).getValue() == 0 && Hand.get(k).getValue() == 0) && Hand.get(j).getFaceValue().equals(Hand.get(k).getFaceValue()))
-                    {
-                        match++;
-                    }
-                    else
-                    if((Hand.get(j).getValue() != 0 && Hand.get(k).getValue() != 0) && (Hand.get(j).getValue() == Hand.get(k).getValue()))
-                    {
-                        match++;
-                    }
-                }
+                pairs++;
+            }
+            else
+            if(three(Hand))
+            {
+                threes++;
+            }
+            else
+            if(straight(Hand))
+            {
+                straights++;
+            }
+            else
+            if(flush(Hand))
+            {
+                flushes++;
+            }
+            else
+            if(fullHouse(Hand))
+            {
+                fullhouses++;
+            }
+            else
+            if(four(Hand))
+            {
+                fours++;
+            }
+            if(straightFlush(Hand))
+            {
+                straightFlushes++;
+            }
+            if(royalFlush(Hand))
+            {
+                royalFlushes++;
             }
 
-            if(match == 1)
-            {
-                successes++;
-            }
-            match = 0;
             populateDeck(Deck);
             shuffleDeck();
         }
-        
-        return (double) successes/n*100;
+
+        System.out.println("\nProbability of Success for **Pair**: " + (double) pairs/n*100 + "%");
+        System.out.println("\nProbability of Success for **Three of a Kind**: " + (double) threes/n*100 + "%");
+        System.out.println("\nProbability of Success for **Straight**: " + (double) straights/n*100 + "%");
+        System.out.println("\nProbability of Success for **Flush**: " + (double) flushes/n*100 + "%");
+        System.out.println("\nProbability of Success for **Full House**: " + (double) fullhouses/n*100 + "%");
+        System.out.println("\nProbability of Success for **Four of a Kind**: " + (double) fours/n*100 + "%");
+        System.out.println("\nProbability of Success for **Straight Flush**: " + (double) straightFlushes/n*100 + "%");
+        System.out.println("\nProbability of Success for **Royal Flush**: " + (double) royalFlushes/n*100 + "%");
     }
 
     /**
-     * Method to calculate probability of getting Three of a Kind in a hand.
+     * Method to check if hand contains Pair.
      * 
-     * @param n number of trials
-     * @param c number of cards in a hand
-     * @return double probability
+     * @param h ArrayList hand
+     * @return boolean
      */
-    public double three(int n, int c)
-    {   
-        int successes = 0;
-        int match = 0;
-
-        shuffleDeck();
-
-        for(int i = 0; i < n; i++)
+    public boolean pair(ArrayList<Card> h)
+    {
+        if(checkMatches(h, 1))
         {
-            drawHand(c);
-            for(int j = 0; j < Hand.size(); j++)
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Method to check if a hand contains Three of a Kind.
+     * 
+     * @param h ArrayList hand
+     * @return boolean
+     */
+    public boolean three(ArrayList<Card> h)
+    {
+        if(checkMatches(h, 3))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Method to check if a hand contains Straight.
+     * 
+     * @param h ArrayList hand
+     * @return boolean
+     */
+    public boolean straight(ArrayList<Card> h)
+    {
+        if(!checkSameSuites(h))
+        {
+            if(checkStraight(h))
             {
-                for(int k = j+1; k < Hand.size(); k++)
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Method to check if a hand contains Flush.
+     * 
+     * @param h ArrayList hand
+     * @return boolean
+     */
+    public boolean flush(ArrayList<Card> h)
+    {
+        if(checkSameSuites(h))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Method to check if a hand contains Full House.
+     * 
+     * @param h ArrayList hand
+     * @return boolean
+     */
+    public boolean fullHouse(ArrayList<Card> h)
+    {
+        if(checkMatches(h, 4))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Method to check if a hand contains Four of a Kind..
+     * 
+     * @param h ArrayList hand
+     * @return boolean
+     */
+    public boolean four(ArrayList<Card> h)
+    {
+        int match = 0;
+        for(int j = 0; j < h.size(); j++)
+        {
+            for(int k = j+1; k < h.size(); k++)
+            {
+                if(h.get(j).getValue() == h.get(k).getValue())
                 {
-                    if((Hand.get(j).getValue() == 0 && Hand.get(k).getValue() == 0) && Hand.get(j).getFaceValue().equals(Hand.get(k).getFaceValue()))
-                    {
-                        match++;
-                    }
-                    else
-                    if((Hand.get(j).getValue() != 0 && Hand.get(k).getValue() != 0) && (Hand.get(j).getValue() == Hand.get(k).getValue()))
-                    {
-                        match++;
-                    }
+                    match++;
                 }
             }
+
             if(match == 3)
             {
-                successes++;
+                return true;
             }
             match = 0;
-            populateDeck(Deck);
-            shuffleDeck();
         }
-        return (double) successes/n*100;
+        return false;
     }
 
-    // TODO: Straight
-
     /**
-     * Method to calculate probability of getting Flush in a hand.
+     * Method to check if a hand contains Straight Flush.
      * 
-     * @param n number of trials
-     * @param c number of cards in a hand
-     * @return double probability
+     * @param h ArrayList hand
+     * @return boolean
      */
-    public double flush(int n, int c)
+    public boolean straightFlush(ArrayList<Card> h)
     {
-        int successes = 0;
-
-        shuffleDeck();
-
-        for(int i = 0; i < n; i++)
+        if(checkSameSuites(h) && checkStraight(h))
         {
-            drawHand(c);
-
-            if(checkSameSuites(Hand))
-            {
-                successes++;
-            }
-
-            populateDeck(Deck);
-            shuffleDeck();
+            return true;
         }
-        
-        return (double) successes/n*100;
+        return false;
     }
-    
+
     /**
-     * Method to calculate probability of getting Full House in a hand.
-     * @param n number of trials
-     * @param c number of cards
-     * @return double probability
+     * Method to check if a hand contains Royal Flush.
+     * 
+     * @param h ArrayList hand
+     * @return boolean
      */
-    public double fullHouse(int n, int c)
+    public boolean royalFlush(ArrayList<Card> h)
     {
-        int successes = 0;
+        if(checkSameSuites(h) && checkRoyalFlush(h))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Method to check if cards in a deck are a number of matches.
+     * 
+     * @param h ArrayList of hand
+     * @param num number of cards to match in a hand
+     * @return boolean true if matches equal num
+     */
+    public boolean checkMatches(ArrayList<Card> h, int num)
+    {
         int match = 0;
-
-        shuffleDeck();
-
-        for(int i = 0; i < n; i++)
+        for(int j = 0; j < Hand.size(); j++)
         {
-            drawHand(c);
-            for(int j = 0; j < Hand.size()-1; j++)
+            for(int k = j+1; k < Hand.size(); k++)
             {
-                for(int k = j+1; k < Hand.size(); k++)
+                if(Hand.get(j).getValue() == Hand.get(k).getValue())
                 {
-                    if((Hand.get(j).getValue() == 0 && Hand.get(k).getValue() == 0) && Hand.get(j).getFaceValue().equals(Hand.get(k).getFaceValue()))
-                    {
-                        match++;
-                    }
-                    else
-                    if((Hand.get(j).getValue() != 0 && Hand.get(k).getValue() != 0) && (Hand.get(j).getValue() == Hand.get(k).getValue()))
-                    {
-                        match++;
-                    }
+                    match++;
                 }
             }
-
-            if(match == 4)
-            {
-                successes++;
-            }
-            match = 0;
-            populateDeck(Deck);
-            shuffleDeck();
         }
-        return (double) successes/n*100;
+
+        if(match == num)
+        {
+            return true;
+        }
+        return false;
     }
 
     /**
-     * Method to calculate probability of Four of a Kind in a hand.
+     * Method to check if cards in a hand are a Straight.
      * 
-     * @param n number of trials
-     * @param c number of cards wanted in a hand
-     * @return double probability
+     * @param h ArrayList hand
+     * @return boolean true if cards are a straight
      */
-    public double four(int n, int c)
+    public boolean checkStraight(ArrayList<Card> h)
     {
-        int successes = 0;
-        int match = 0;
+        int inHand = 0;
 
-        shuffleDeck();
-
-        for(int i = 0; i < n; i++)
+        // find the max value in a hand
+        int max = h.get(0).getValue();
+        for(int i = 1; i < h.size(); i++)
         {
-            drawHand(c);
-            for(int j = 0; j < Hand.size(); j++)
+            if(h.get(i).getValue() > max)
             {
-                for(int k = j+1; k < Hand.size(); k++)
-                {
-                    if((Hand.get(j).getValue() == 0 && Hand.get(k).getValue() == 0) && Hand.get(j).getFaceValue().equals(Hand.get(k).getFaceValue()))
-                    {
-                        match++;
-                    }
-                    else
-                    if((Hand.get(j).getValue() != 0 && Hand.get(k).getValue() != 0) && (Hand.get(j).getValue() == Hand.get(k).getValue()))
-                    {
-                        match++;
-                    }
-                }
-
-                if(match == 3)
-                {
-                    successes++;
-                }
-                match = 0;
+                max = h.get(i).getValue();
             }
-
-            populateDeck(Deck);
-            shuffleDeck();
         }
 
-        return (double) successes/n * 100;
-    }
-
-    // TODO: Straight flush
-
-    // TODO: Royal flush -- ask does order matter -- can it be J K 10 A Q
-    // royal flush ONLY has A K Q J 10 with all in the SAME suit
-    /**
-     * Method to calculate probability of Royal Flush in a hand
-     * 
-     * @param n number of trials
-     * @param c number of cards wanted in a hand
-     * @return double probabilty
-     */
-    public double royalFlush(int n, int c)
-    {
-        int successes = 0;
-
-        shuffleDeck();
-
-        for(int i = 0; i < n; i++)
+        // get range of values - max - 5 and insert into values array
+        ArrayList<Integer> values = new ArrayList<>();
+        for(int i = max; i > max-5; i--)
         {
-            drawHand(c);
-
-            if(checkSameSuites(Hand))
-            {
-                if(checkRoyalFlush(Hand))
-                {
-                    successes++;
-                }
-            }
-
-            populateDeck(Deck);
-            shuffleDeck();
+            values.add(i);
         }
 
-        return (double) successes/n * 100;
+        // check if hand contains values and remove values
+        for(int i = 0; i < h.size(); i++)
+        {
+            for(int j = 0; j < values.size(); j++)
+            {
+                if(h.get(i).getValue() == values.get(j))
+                {
+                    inHand++;
+                    values.remove(j);
+                }
+            }
+        }
+
+        if(inHand == 5)
+        {
+            return true;
+        }
+        return false;
     }
     
     /**
      * Method to check if cards in a hand have the same suite.
      * 
-     * @param h ArrayList of hand
+     * @param h ArrayList hand
      * @return boolean true if all suites match
      */
     public boolean checkSameSuites(ArrayList<Card> h)
@@ -398,7 +424,7 @@ public class HandEvaluator
     }
 
     /**
-     * Method to check if a hand is a royal flush
+     * Method to check if a hand is a Royal Flush.
      * 
      * @param h ArrayList hand
      * @return boolean
@@ -415,7 +441,7 @@ public class HandEvaluator
 
         for(int i = 0; i < h.size(); i++)
         {
-            if(h.get(i).getValue() == 0)
+            if(h.get(i).getValue() > 10)
             {
                 for(int j = 0; j < faces.size(); j++)
                 {
@@ -441,12 +467,34 @@ public class HandEvaluator
         }
         return false;
     }
+
+    /**
+     * Method to print out cards in Deck
+     */
+    public void printDeck()
+    {
+        for(int i = 0; i < Deck.size(); i++)
+        {
+            if(Deck.get(i).getValue() < 11)
+            {
+                System.out.print("[" + Deck.get(i).getSuite() + " " + Deck.get(i).getValue() + "] ");
+            }
+            else
+            {
+                System.out.print("[" + Deck.get(i).getSuite() + " " + Deck.get(i).getFaceValue() + "] ");
+            }
+        }
+        System.out.println();
+    }
     
+    /**
+     * Method to print out cards in hand.
+     */
     public void printHand()
     {
         for(int i = 0; i < Hand.size(); i++)
         {
-            if(Hand.get(i).getValue() > 0)
+            if(Hand.get(i).getValue() < 11)
             {
                 System.out.print("[" + Hand.get(i).getSuite() + " " + Hand.get(i).getValue() + "] ");
             }
@@ -455,5 +503,6 @@ public class HandEvaluator
                 System.out.print("[" + Hand.get(i).getSuite() + " " + Hand.get(i).getFaceValue() + "] ");
             }
         }
+        System.out.println();
     }
 }

@@ -22,10 +22,11 @@ public class Card
      * @param suite
      * @param faceValue
      */
-    public Card(String suite, String faceValue)
+    public Card(String suite, String faceValue, int value)
     {
         this.suite = suite;
         this.faceValue = faceValue;
+        this.value = value;
     }
 
     /**

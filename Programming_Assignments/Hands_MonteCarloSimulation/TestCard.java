@@ -1,14 +1,14 @@
 package Programming_Assignments.Hands_MonteCarloSimulation;
 
 /* !! Read:
- * Compared probabilities from this website int the 'Results & Discussion' section:
+ * Compared probabilities from this website in the 'Results & Discussion' section:
  *      Perry, P. (2008, Dec. 31). Monte Carlo Poker Odds [Blog Post]. Retrieved from https://ptrckprry.com/blog/programming/2008/12/31/monte-carlo-poker-odds/.
  * 
- * Each method takes 2 parameters: 
+ * runMonteCarlo method takes 2 parameters: 
  *      n = number of trials
  *      c = number of cards for hand
  * 
- * For royal flush: had to increase the number of trials from 10,000 to 1,000,000 to get results. If probability outputs as 0.0%, run it again.
+ * Had to increase n from '10,000' to '1,000,000' to get results for 'Straight Flush' and 'Royal Flush'. If result for those two appear as '0.0%' run again until a different result appears.
  */
 
 public class TestCard
@@ -16,21 +16,29 @@ public class TestCard
     public static void main(String[]args)
     {
         HandEvaluator hand = new HandEvaluator();
-        
-        System.out.println("\nProbability of Success for **Pair**: " + hand.pair(10000, 5) + "%");
 
-        System.out.println("\nProbability of Success for **Three of a Kind**: " + hand.three(10000, 5) + "%");
+        /* To show that:
+         *      - The deck is populated
+         *      - Deck can be shuffled 
+         *      - Can draw cards in a hand and
+         *      - Print the card in hand
+         */
 
-        // TODO: straight
+        System.out.println("===== Populated Deck =====");
+        hand.printDeck();
 
-        System.out.println("\nProbability of Success for **Flush**: " + hand.flush(10000, 5) + "%");
+        System.out.println("\n===== Shuffled Deck =====");
+        hand.shuffleDeck();
+        hand.printDeck();
 
-        System.out.println("\nProbability of Success for **Full House**: " + hand.fullHouse(10000, 5) + "%");
+        System.out.println("\n===== Cards in Hand =====");
+        hand.drawHand(5);
+        hand.printHand();
 
-        System.out.println("\nProbability of Success for **Four of a Kind**: " + hand.four(10000, 5) + "%");
+        // Running the Monte Carlo Simulation
+        HandEvaluator monteSim = new HandEvaluator();
 
-        // TODO: straight flush
-
-        System.out.println("\nProbability of Success for **Royal Flush**: " + hand.royalFlush(1000000, 5) + "%");
-    }    
+        System.out.println("\n===== Monte Carlo Simulation of Poker Hands =====");
+        monteSim.runMonteCarlo(1000000, 5);
+    }
 }
