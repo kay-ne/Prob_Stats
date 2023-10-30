@@ -1,0 +1,10 @@
+5 Cards in Hand,,
+Hand Type,Count,Probability
+Pair,423115,0.423115
+Three of a Kind,20656,0.020656
+Straight,3586,0.003586
+Flush,2056,0.002056
+Fullhouse,1446,0.001446
+Four of a Kind,256,2.56E-04
+Straight Flush,20,2.00E-05
+Royal Flush,1,1.00E-06

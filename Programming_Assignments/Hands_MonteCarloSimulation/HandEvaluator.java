@@ -1,5 +1,8 @@
 package Programming_Assignments.Hands_MonteCarloSimulation;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -183,6 +186,58 @@ public class HandEvaluator
         System.out.println("\nProbability of Success for **Four of a Kind**: " + (double) fours/n*100 + "%");
         System.out.println("\nProbability of Success for **Straight Flush**: " + (double) straightFlushes/n*100 + "%");
         System.out.println("\nProbability of Success for **Royal Flush**: " + (double) royalFlushes/n*100 + "%");
+
+        // write into excel file:
+        ArrayList<Integer> handRanks = new ArrayList<>();
+        handRanks.add(pairs);
+        handRanks.add(threes);
+        handRanks.add(straights);
+        handRanks.add(flushes);
+        handRanks.add(fullhouses);
+        handRanks.add(fours);
+        handRanks.add(straightFlushes);
+        handRanks.add(royalFlushes);
+
+        writeToExcel(handRanks, n);
+    }
+
+    public void writeToExcel(ArrayList<Integer> hr, int n)
+    {
+        ArrayList<String> handTypes = new ArrayList<>();
+        handTypes.add("Pair");
+        handTypes.add("Three of a Kind");
+        handTypes.add("Straight");
+        handTypes.add("Flush");
+        handTypes.add("Fullhouse");
+        handTypes.add("Four of a Kind");
+        handTypes.add("Straight Flush");
+        handTypes.add("Royal Flush");
+
+        File file = new File("Programming_Assignments\\Hands_MonteCarloSimulation\\MonteCarloSimulationData.csv");
+        
+        FileWriter w;
+        try 
+        {
+            w = new FileWriter(file);
+            if(!hr.isEmpty())
+            {
+                w.write("Hand Type,Count,Probability\n");
+                for(int i = 0; i < hr.size(); i++)
+                {
+                    w.write(handTypes.get(i) + "," + String.valueOf(hr.get(i)) + "," + String.valueOf((double) hr.get(i)/n) + "\n");
+                }
+                System.out.println("\nWriting to: \"" + file.getName() + "\" was successful!");
+            }
+            else
+            {
+                System.out.println("Error: Failed to write into \"" + file.getName() + "\" because data is empty!");
+            }
+            w.close();
+        } 
+        catch (IOException e) 
+        {
+            System.out.println("An error has occurred: " + e);
+        }
     }
 
     /**

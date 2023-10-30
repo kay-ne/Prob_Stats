@@ -17,28 +17,7 @@ public class TestCard
     {
         HandEvaluator hand = new HandEvaluator();
 
-        /* To show that:
-         *      - The deck is populated
-         *      - Deck can be shuffled 
-         *      - Can draw cards in a hand and
-         *      - Print the card in hand
-         */
-
-        System.out.println("===== Populated Deck =====");
-        hand.printDeck();
-
-        System.out.println("\n===== Shuffled Deck =====");
-        hand.shuffleDeck();
-        hand.printDeck();
-
-        System.out.println("\n===== Cards in Hand =====");
-        hand.drawHand(5);
-        hand.printHand();
-
-        // Running the Monte Carlo Simulation
-        HandEvaluator monteSim = new HandEvaluator();
-
         System.out.println("\n===== Monte Carlo Simulation of Poker Hands =====");
-        monteSim.runMonteCarlo(1000000, 5);
+        hand.runMonteCarlo(1000000, 5);
     }
 }
