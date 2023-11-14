@@ -1,4 +1,4 @@
-package Programming_Assignments.Hands_MonteCarloSimulation;
+package Project_1.Programming_Assignments.Hands_MonteCarloSimulation;
 
 public class Card
 {

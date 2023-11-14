@@ -1,4 +1,4 @@
-package Programming_Assignments.Hands_MonteCarloSimulation;
+package Project_1.Programming_Assignments.Hands_MonteCarloSimulation;
 
 /* !! Read:
  * Compared probabilities from this website in the 'Results & Discussion' section:
