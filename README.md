@@ -1,5 +1,5 @@
 # Prob_Stats
-*Updated: Nov. 14, 2023*
+*Updated: Nov. 26, 2023*
 
 Hello! This repository is for the Probability and Applied Statistics course in Fall 2023.
 
@@ -10,14 +10,14 @@ Currently has 2 main folders:
 <hr>
 Will be adding:
 <ul>
-  <li><b>Project_2</b> folder will be created.</li>
   <li>First assignment -- Part 1 of Project_2, Plotter, Salter, and Smoother.</li>
   <li>Ch. 4 and Ch. 5 programs for formulas in <b>StatsLibrary</b>.</li>
   <li>Formula sheet for Ch. 4 and Ch. 5.</li>
 </ul>
 
-Additions since the last update (10/28/23):
-- Moved all files to a folder called **Project_1**
+Additions since the last update (11/14/23):
+- Added **Project 2** folder
+- Uploaded Mini report on Normal, Gamma, and Beta distributions
 <hr>
 <i>Click below for what the project contains</i>
 <details>
