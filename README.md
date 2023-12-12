@@ -1,5 +1,5 @@
 # Prob_Stats
-*Updated: Nov. 26, 2023*
+*Updated: Dec. 11, 2023*
 
 Hello! This repository is for the Probability and Applied Statistics course in Fall 2023.
 
@@ -21,17 +21,18 @@ Currently has 2 main folders:
     <ul>
       <li><b>Papers</b>: Contains papers done during second half of semester. Includes <i>Normal, Gamma, and Beta Dist. (Mini-Report)</i> and will contain other reports.</li>
     </ul>
-  <li><b>StatsLibrary</b>: Contains programs of formulas from the course, separated into three chapters (1-3). !![Will be edited to contain last two chapters]</li>
+  <li><b>StatsLibrary</b>: Contains programs of formulas from the course, separated into five chapters. (4-5 are for Project 2)</li>
+  <li>Formula Sheet PDF for Chapters 4 and 5</li>
 </ul>
 
 <hr>
 Will be adding:
 <ul>
   <li>First assignment -- Part 1 of Project_2, Plotter, Salter, and Smoother.</li>
-  <li>Ch. 4 and Ch. 5 programs for formulas in <b>StatsLibrary</b>.</li>
-  <li>Formula sheet for Ch. 4 and Ch. 5.</li>
+  <li>Stocks Assignment</li>
+  <li>Final Project Report</li>
 </ul>
 
-Additions since the last update (11/14/23):
-- Added **Project 2** folder
-- Uploaded Mini report on Normal, Gamma, and Beta distributions
+Additions since the last update (11/26/23):
+- Uploaded Chapter 5 and results from testing in **StatsLibrary**
+- Uploaded formula sheet for chapters 4 and 5
