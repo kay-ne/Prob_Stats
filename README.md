@@ -30,7 +30,7 @@ Will be adding:
 <ul>
   <li>First assignment -- Part 1 of Project_2, Plotter, Salter, and Smoother.</li>
   <li>First assignment -- Part 2 of Project_2, Octave.</li>
-  <li>First assignment -- Part 3 of Project_2, JFreeChart and Apache.</li>>
+  <li>First assignment -- Part 3 of Project_2, JFreeChart and Apache.</li>
   <li>Report for the Plotter, Salter, Smoother assignment.</li>
   <li>Stocks Assignment.</li>
 </ul>
