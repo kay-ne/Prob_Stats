@@ -20,7 +20,7 @@ Currently has 3 main folders:
   <li><b>Project_2</b></li>
     <ul>
       <li><b>Papers</b>: Contains papers done during second half of semester. Includes <i>Normal, Gamma, and Beta Dist. (Mini-Report)</i>, <i>Report_Final_Project</i> and <i>Report_Plotter_Salter_Smoother</i>. This also contains the data set used for the final report.</li>
-      <li><b>Plotter_Salter_Smoother</b>: Contains <i>Part_1_Java</i> and <i>Part_2_Octave</i> files. An explanation for missing <i>Part_2_JFreeChart_Apache</i> is discussed in the report. The <b>Report_Plotter_Salter_Smoother</b> can be found here as well (a copy is in <b>Papers</b> folder).</li>
+      <li><b>Plotter_Salter_Smoother</b>: Contains <i>Part_1_Java</i> and <i>Part_2_Octave</i> files. An explanation for missing <i>Part_3_JFreeChart_Apache</i> is discussed in the report. The <b>Report_Plotter_Salter_Smoother</b> can be found here as well (a copy is in <b>Papers</b> folder).</li>
     </ul>
   <li><b>StatsLibrary</b>: Contains programs of formulas from the course, separated into five chapters. (4-5 are for Project 2)</li>
   <li>Formula Sheet PDF for Chapters 4 and 5</li>
