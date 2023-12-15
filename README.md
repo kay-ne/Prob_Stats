@@ -3,7 +3,7 @@
 
 Hello! This repository is for the Probability and Applied Statistics course in Fall 2023.
 
-Currently has 2 main folders: 
+Currently has 3 main folders: 
 <br><ins>*Shown are details for:* **Project_2**</ins>
 <br><i>Click <b>Project_1</b> for what that project contains</i>
 <details>
@@ -23,7 +23,7 @@ Currently has 2 main folders:
       <li><b>Plotter_Salter_Smoother</b>: Contains <i>Part_1_Java</i> and <i>Part_2_Octave</i> files. An explanation for missing <i>Part_2_JFreeChart_Apache</i> is discussed in the report. The <b>Report_Plotter_Salter_Smoother</b> can be found here as well (a copy is in <b>Papers</b> folder).</li>
     </ul>
   <li><b>StatsLibrary</b>: Contains programs of formulas from the course, separated into five chapters. (4-5 are for Project 2)</li>
-  <li><b>Formula Sheet PDF for Chapters 4 and 5</b></li>
+  <li>Formula Sheet PDF for Chapters 4 and 5</li>
 </ul>
 
 <hr>
