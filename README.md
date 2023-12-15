@@ -1,5 +1,5 @@
 # Prob_Stats
-*Updated: Dec. 13, 2023*
+*Updated: Dec. 14, 2023*
 
 Hello! This repository is for the Probability and Applied Statistics course in Fall 2023.
 
@@ -19,7 +19,8 @@ Currently has 2 main folders:
 <ul>
   <li><b>Project_2</b></li>
     <ul>
-      <li><b>Papers</b>: Contains papers done during second half of semester. Includes <i>Normal, Gamma, and Beta Dist. (Mini-Report)</i>, <i>Report_Final_Project</i> and will contain other reports. This also contains the data set used for the final report.</li>
+      <li><b>Papers</b>: Contains papers done during second half of semester. Includes <i>Normal, Gamma, and Beta Dist. (Mini-Report)</i>, <i>Report_Final_Project</i> and <i>Report_Plotter_Salter_Smoother</i>. This also contains the data set used for the final report.</li>
+      <li><b>Plotter_Salter_Smoother</b>: Contains <i>Part_1_Java</i> and <i>Part_2_Octave</i> files. An explanation for missing <i>Part_2_JFreeChart_Apache</i> is discussed in the report. The <b>Report_Plotter_Salter_Smoother</b> can be found here as well (a copy is in <b>Papers</b> folder).</li>
     </ul>
   <li><b>StatsLibrary</b>: Contains programs of formulas from the course, separated into five chapters. (4-5 are for Project 2)</li>
   <li><b>Formula Sheet PDF for Chapters 4 and 5</b></li>
@@ -28,12 +29,11 @@ Currently has 2 main folders:
 <hr>
 Will be adding:
 <ul>
-  <li>First assignment -- Part 1 of Project_2, Plotter, Salter, and Smoother.</li>
-  <li>First assignment -- Part 2 of Project_2, Octave.</li>
-  <li>First assignment -- Part 3 of Project_2, JFreeChart and Apache.</li>
-  <li>Report for the Plotter, Salter, Smoother assignment.</li>
-  <li>Stocks Assignment.</li>
+  <li><i>None.</i></li>
 </ul>
 
-Additions since the last update (12/11/23):
-- Uploaded final report paper in **Papers** folder
+**Note:** Due to time constraints, the assignment **Stocks** or **Basic Stock Bot Back Testing Simple Algorithms** was not completed/worked on. Thus, there is no report, and will not be uploaded for the submission of **Project_2**.
+
+Additions since the last update (12/13/23):
+- Uploaded **Plotter_Salter_Smoother** files.
+- Uploaded report for assignment above: **Report_Plotter_Salter_Smoother** can be found in the folder above and in **Papers** of **Project_2**.
