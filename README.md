@@ -1,11 +1,10 @@
 # Prob_Stats
-*Updated: Dec. 14, 2023*
+*Updated: Apr. 30, 2024*
 
 Hello! This repository is for the Probability and Applied Statistics course in Fall 2023.
 
 Currently has 3 main folders: 
-<br><ins>*Shown are details for:* **Project_2**</ins>
-<br><i>Click <b>Project_1</b> for what that project contains</i>
+<br><i>Click on projects for what they contains</i>
 <details>
   <summary><b>Project_1</b></summary>
   <ul>
@@ -16,6 +15,8 @@ Currently has 3 main folders:
   </ul>
 </details>
 
+<details>
+  <summary><b>Project_1</b></summary>
 <ul>
   <li><b>Project_2</b></li>
     <ul>
@@ -25,6 +26,9 @@ Currently has 3 main folders:
   <li><b>StatsLibrary</b>: Contains programs of formulas from the course, separated into five chapters. (4-5 are for Project 2)</li>
   <li>Formula Sheet PDF for Chapters 4 and 5</li>
 </ul>
+</details>
+
+<b>StatsLibrary</b> contains programs of formulas used in class.
 
 <hr>
 Will be adding:
@@ -34,6 +38,5 @@ Will be adding:
 
 **Note:** Due to time constraints, the assignment **Stocks** or **Basic Stock Bot Back Testing Simple Algorithms** was not completed/worked on. Thus, there is no report, and will not be uploaded for the submission of **Project_2**.
 
-Additions since the last update (12/13/23):
-- Uploaded **Plotter_Salter_Smoother** files.
-- Uploaded report for assignment above: **Report_Plotter_Salter_Smoother** can be found in the folder above and in **Papers** of **Project_2**.
+Additions since the last update (12/14/23):
+- Edited ReadMe
