@@ -16,7 +16,7 @@ Currently has 3 main folders:
 </details>
 
 <details>
-  <summary><b>Project_1</b></summary>
+  <summary><b>Project_2</b></summary>
 <ul>
   <li><b>Project_2</b></li>
     <ul>
